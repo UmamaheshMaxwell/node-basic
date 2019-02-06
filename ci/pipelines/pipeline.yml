@@ -1,0 +1,15 @@
+resources:
+- name: node-basic
+  type: git
+  source: 
+    uri: https://github.com/UmamaheshMaxwell/node-basic.git
+    branch: master
+
+jobs:
+- name: job-run-tests
+  public: true
+  plan:
+   - get: node-basic
+     trigger: true
+   - task: web-app-test
+     file: node-basic/ci/tasks/run-test.yml

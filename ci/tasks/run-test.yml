@@ -1,0 +1,13 @@
+---
+platform: linux
+
+image_resource:
+ type: docker-image
+ source: { repository: node, tag: 8}
+
+inputs:
+- name: node-basic
+  path: nodepath/github.com/UmamaheshMaxwell/node-basic
+  
+run:
+  path: node-basic/ci/tasks/run-test.sh
