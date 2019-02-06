@@ -11,4 +11,4 @@ inputs:
   
 run:
   path: bash
-  args: [node-basic/ci/tasks/run-test.sh]
+  args: [./node-basic/ci/tasks/run-test.sh]
