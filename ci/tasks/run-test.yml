@@ -10,4 +10,5 @@ inputs:
   path: nodepath/github.com/UmamaheshMaxwell/node-basic
   
 run:
-  path: nodepath/github.com/UmamaheshMaxwell/node-basic/ci/tasks/run-test.sh
+  path: sh
+  args: [nodepath/github.com/UmamaheshMaxwell/node-basic/ci/tasks/run-test.sh]
