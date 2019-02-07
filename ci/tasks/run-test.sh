@@ -5,5 +5,5 @@ export NODEPATH=$(pwd)/nodepath:$(pwd)/nodepath/src/github.com/UmamaheshMaxwell/
 cd nodepath/github.com/UmamaheshMaxwell/node-basic/
 
 npm install
-npm start
+#npm start
 npm run test
