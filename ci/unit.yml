@@ -11,4 +11,4 @@ inputs:
 
 run:
   path: sh
-  args: [node-basic/pipelines/unit.sh]
+  args: [node-basic/unit.sh]
