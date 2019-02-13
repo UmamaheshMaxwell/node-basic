@@ -19,7 +19,7 @@ jobs:
      trigger: true
    - get: node-develop
      trigger: true
-   - task: web-app-test
-     file: node-master/ci/tasks/run-master.yml
-   - task: web-app-test
+   - task: web-app-master
+     file: node-master/ci/tasks/run-test.yml
+   - task: web-app-develop
      file: node-develop/ci/tasks/run-test.yml
