@@ -6,9 +6,9 @@ image_resource:
  source: { repository: node, tag: 8}
 
 inputs:
-- name: node-master
-  path: node-master
+- name: node-basic
+  path: node-basic
 
 run:
   path: sh
-  args: [node-master/ci/tasks/run-master.sh]
+  args: [node-basic/pipelines/unit.sh]

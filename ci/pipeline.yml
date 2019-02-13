@@ -1,0 +1,57 @@
+groups:
+  - name: Production
+    jobs: 
+     - job-run-master
+  - name: Develop
+    jobs: 
+     - job-run-develop    
+  - name: Feature
+    jobs: 
+     - job-run-feature  
+
+resources:
+- name: node-master
+  type: git
+  source: 
+    uri: https://github.com/UmamaheshMaxwell/node-basic.git
+    branch: master
+
+- name: node-develop
+  type: git
+  source: 
+    uri: https://github.com/UmamaheshMaxwell/node-basic.git
+    branch: develop
+
+- name: node-feature
+  type: git
+  source: 
+    uri: https://github.com/UmamaheshMaxwell/node-basic.git
+    branch: feature/*
+
+jobs:
+- name: job-run-master
+  public: true
+  plan:
+   - get: node-basic
+     resource: node-master
+     trigger: true
+   - task: unit-test-master
+     file: node-basic/ci/unit.yml
+
+- name: job-run-develop
+  public: true
+  plan:
+   - get: node-basic
+     resource: node-develop
+     trigger: true
+   - task: unit-test-develop
+     file: node-basic/ci/unit.yml
+
+- name: job-run-feature
+  public: true
+  plan:
+   - get: node-basic
+     resource: node-feature
+     trigger: true
+   - task: unit-test-develop
+     file: node-basic/ci/unit.yml
