@@ -1,15 +1,25 @@
 resources:
-- name: node-basic
+- name: node-master
   type: git
   source: 
     uri: https://github.com/UmamaheshMaxwell/node-basic.git
     branch: master
 
+- name: node-develop
+  type: git
+  source: 
+    uri: https://github.com/UmamaheshMaxwell/node-basic.git
+    branch: develop
+
 jobs:
 - name: job-run-tests
   public: true
   plan:
-   - get: node-basic
+   - get: node-master
+     trigger: true
+   - get: node-develop
      trigger: true
    - task: web-app-test
-     file: node-basic/ci/tasks/run-test.yml
+     file: node-master/ci/tasks/run-master.yml
+   - task: web-app-test
+     file: node-develop/ci/tasks/run-test.yml

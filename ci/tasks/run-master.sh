@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cd node-basic/
+cd node-master/
 
 npm install
 npm run test

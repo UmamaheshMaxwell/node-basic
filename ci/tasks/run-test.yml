@@ -6,9 +6,11 @@ image_resource:
  source: { repository: node, tag: 8}
 
 inputs:
-- name: node-basic
-  path: node-basic
-  
+- name: node-master
+  path: node-master
+- name: node-develop
+  path: node-develop
+
 run:
   path: sh
-  args: [node-basic/ci/tasks/run-test.sh]
+  args: [node-master/ci/tasks/run-master.sh, node-develop/ci/tasks/run-develop.sh]
