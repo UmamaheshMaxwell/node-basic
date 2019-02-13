@@ -12,4 +12,5 @@ pushd "$DIR"
   fly -t ${fly_target} unpause-pipeline -p node-pipeline
   fly -t ${fly_target} trigger-job -w -j node-pipeline/job-run-master
   fly -t ${fly_target} trigger-job -w -j node-pipeline/job-run-develop
+  fly -t ${fly_target} trigger-job -w -j node-pipeline/job-run-feature
 popd
