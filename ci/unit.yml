@@ -11,4 +11,5 @@ inputs:
 
 run:
   path: sh
-  args: [node-basic/unit.sh]
+  args: [node-basic/ci/unit.sh]
+
