@@ -8,9 +8,7 @@ image_resource:
 inputs:
 - name: node-master
   path: node-master
-- name: node-develop
-  path: node-develop
 
 run:
   path: sh
-  args: [node-master/ci/tasks/run-master.sh, node-develop/ci/tasks/run-develop.sh]
+  args: [node-master/ci/tasks/run-master.sh]

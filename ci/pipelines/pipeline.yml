@@ -12,14 +12,18 @@ resources:
     branch: develop
 
 jobs:
-- name: job-run-tests
+- name: job-run-master
   public: true
   plan:
    - get: node-master
      trigger: true
+   - task: web-app-master
+     file: node-master/ci/tasks/run-master.yml
+
+- name: job-run-develop
+  public: true
+  plan:
    - get: node-develop
      trigger: true
-   - task: web-app-master
-     file: node-master/ci/tasks/run-test.yml
    - task: web-app-develop
-     file: node-develop/ci/tasks/run-test.yml
+     file: node-develop/ci/tasks/run-develop.yml
