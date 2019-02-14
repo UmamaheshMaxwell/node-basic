@@ -2,9 +2,11 @@ groups:
   - name: Production
     jobs: 
      - job-run-master
+     - build-master
   - name: Develop
     jobs: 
-     - job-run-develop    
+     - job-run-develop
+     - build-develop
   - name: Feature
     jobs: 
      - job-run-feature  
@@ -26,7 +28,21 @@ resources:
   type: git
   source: 
     uri: https://github.com/UmamaheshMaxwell/node-basic.git
-    branch: feature/*
+    branch: feature/nb-2
+
+
+- name: ecr-repository-master
+  type: docker-image
+  source: &ecr-repo
+    aws_access_key_id: ''
+    aws_secret_access_key: ''
+    repository: 'keep here ecr-repo'
+
+- name: ecr-repository-develop
+  type: docker-image
+  source:
+    <<: *ecr-repo
+    repository: 'keep here ecr-repo'
 
 jobs:
 - name: job-run-master
@@ -55,3 +71,26 @@ jobs:
      trigger: true
    - task: unit-test-develop
      file: node-basic/ci/unit.yml
+
+- name: build-master
+  public: true
+  plan:
+  - get: node-basic
+    resource: node-master
+    passed: [job-run-master]
+  - put: ecr-repository-master
+    params:
+     build: node-basic/
+
+- name: build-develop
+  public: true
+  plan:
+  - get: node-basic
+    resource: node-develop
+    passed: [job-run-develop]
+  - put: ecr-repository-develop
+    params:
+     build: node-basic/
+
+
+
