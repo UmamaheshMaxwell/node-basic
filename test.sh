@@ -3,7 +3,7 @@
 set -eu
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-export fly_target=${fly_target:-cons}
+export fly_target=${fly_target:-tutorial}
 echo "Concourse API target ${fly_target}"
 echo "Tutorial $(basename $DIR)"
 export branchName=$(git branch | grep \* | cut -d ' ' -f2)
