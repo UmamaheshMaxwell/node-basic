@@ -28,7 +28,7 @@ resources:
   type: git
   source: 
     uri: https://github.com/UmamaheshMaxwell/node-basic.git
-    branch: feature/nb-2
+    branch: ((branch-version))
 
 
 - name: ecr-repository-master
